@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">ToDoApp</string>
     <string name="all_tasks_title">Все</string>
+    <string name="work_tasks_title">Работа</string>
+    <string name="person_tasks_title">Личное</string>
+    <string name="health_tasks_title">Здоровье</string>
+    <string name="list_product_tasks_title">Список покупок</string>
+    <string name="tasks_title">Задачи</string>
+    <string name="calendar_tite">Календарь</string>
+    <string name="profile_tite">Профиль</string>
+    <string name="today_title">Сегодня</string>
 </resources>

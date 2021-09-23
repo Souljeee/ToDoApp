@@ -1,13 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <HorizontalScrollView
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:textColor="?attr/colorPrimary"
+                    android:backgroundTint="#3653FA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/all_tasks_title"
+                    app:cornerRadius="30dp" />
+
+                <Button
+                    android:textColor="?attr/colorPrimary"
+                    android:backgroundTint="#3653FA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/work_tasks_title"
+                    app:cornerRadius="30dp" />
+
+                <Button
+                    android:textColor="?attr/colorPrimary"
+                    android:backgroundTint="#3653FA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/person_tasks_title"
+                    app:cornerRadius="30dp" />
+
+                <Button
+                    android:textColor="?attr/colorPrimary"
+                    android:backgroundTint="#3653FA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/health_tasks_title"
+                    app:cornerRadius="30dp" />
+
+                <Button
+                    android:textColor="?attr/colorPrimary"
+                    android:backgroundTint="#3653FA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/list_product_tasks_title"
+                    app:cornerRadius="30dp" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/white"
+            app:itemIconTint="@drawable/bottom_icon_selected"
+            app:itemTextColor="@drawable/bottom_icon_selected"
+            app:menu="@menu/bottom_nav_menu"/>
+    </LinearLayout>
 
 
 
-</LinearLayout>
+</RelativeLayout>
