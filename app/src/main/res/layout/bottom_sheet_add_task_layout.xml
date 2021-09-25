@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_container"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    app:background="@drawable/bottom_sheet_shape">
+
+    <EditText
+        android:id="@+id/task_title1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/add_tasks_edit"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:hint="@string/add_task_edit_title"
+        android:textColorHint="@color/grey"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:entries="@array/catNames"
+            android:spinnerMode="dropdown"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageButton
+                    android:layout_gravity="center"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_baseline_date_range_24"
+                    android:background="@android:color/transparent"/>
+            </LinearLayout>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_send"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3653FA"
+                android:src="@drawable/ic_baseline_send_24"
+                app:tint="@color/white"
+                android:layout_marginEnd="15dp"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

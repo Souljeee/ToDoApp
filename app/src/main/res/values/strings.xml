@@ -9,4 +9,12 @@
     <string name="calendar_tite">Календарь</string>
     <string name="profile_tite">Профиль</string>
     <string name="today_title">Сегодня</string>
+    <string name="add_task_edit_title">Введите новую задачу</string>
+
+    <string-array name="catNames">
+        <item>Все</item>
+        <item>Работа</item>
+        <item>Список покупок</item>
+        <item>Личное</item>
+    </string-array>
 </resources>
