@@ -18,11 +18,24 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"/>
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="delete"
+            android:textColor="@color/black"/>
+        <Button
+            android:id="@+id/update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="update"
+            android:textColor="@color/black"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tasks_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"

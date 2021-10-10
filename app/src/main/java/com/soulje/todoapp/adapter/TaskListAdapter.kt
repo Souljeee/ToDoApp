@@ -5,6 +5,7 @@ import android.os.Handler
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StrikethroughSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,21 +14,22 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.soulje.todoapp.R
-import com.soulje.todoapp.model.Task
+import com.soulje.todoapp.db.TaskEntity
+import com.soulje.todoapp.viewModel.MainViewModel
 
-class TaskListAdapter(rv: RecyclerView): Adapter<TaskListAdapter.ViewHolder>() {
+class TaskListAdapter(viewModel: MainViewModel): Adapter<TaskListAdapter.ViewHolder>() {
     private lateinit var holder : ViewHolder
-    private lateinit var tasks : MutableList<Task>
-    private var rc = rv
+    private lateinit var tasks : MutableList<TaskEntity>
+    private val viewModel1 = viewModel
 
-    fun setTasks(tasks: MutableList<Task>){
+    fun setTasks(tasks: MutableList<TaskEntity>){
         this.tasks = tasks
         Handler().post {
             notifyDataSetChanged()
         }
     }
 
-    fun addTask(task : Task){
+    fun addTask(task : TaskEntity){
         tasks.add(0,task)
         Handler().post {
             notifyItemInserted(0)
@@ -59,11 +61,28 @@ class TaskListAdapter(rv: RecyclerView): Adapter<TaskListAdapter.ViewHolder>() {
         private var taskCheck : CheckBox = itemView.findViewById(R.id.toggle)
         private var title: TextView = itemView.findViewById(R.id.task_title)
 
-        fun bind(task : Task){
-            taskCheck.isChecked = false
-            title.text = task.title
-            taskCheck.setOnCheckedChangeListener { toggle, isChecked ->
+        fun bind(task : TaskEntity){
+
+            //устанавливаем вьюшку в зависимости от поля done
+            if(task.done){
+                taskCheck.isChecked = true
+                title.text = task.title
+                title.setTextColor(Color.parseColor("#676666"))
+                val string = SpannableString(title.text)
+                string.setSpan(StrikethroughSpan(),0,string.length,0)
+                title.text = string
+            }
+            else{
+                taskCheck.isChecked = false
+                title.setTextColor(Color.BLACK)
+                title.text = task.title
+            }
+
+            //слушатель чекбокса
+            taskCheck.setOnCheckedChangeListener { _, isChecked ->
                 if(isChecked){
+                    task.done = true
+                    viewModel1.updateTask(task)
                     title.setTextColor(Color.parseColor("#676666"))
                     val string = SpannableString(title.text)
                     string.setSpan(StrikethroughSpan(),0,string.length,0)
@@ -71,8 +90,9 @@ class TaskListAdapter(rv: RecyclerView): Adapter<TaskListAdapter.ViewHolder>() {
                     Handler().post {
                         notifyItemMoved(adapterPosition,tasks.size-1)
                     }
-                    //removeTask(adapterPosition)
                 }else{
+                    task.done = false
+                    viewModel1.updateTask(task)
                     title.setTextColor(Color.BLACK)
                     title.text = task.title
                     Handler().post {

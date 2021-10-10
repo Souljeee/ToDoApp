@@ -1,6 +1,7 @@
 package com.soulje.todoapp.model
 
-data class Task(
+/*data class Task(
     var title : String = "",
-    var priority : Int = 0
-)
+    var priority : Int = 0,
+    var done : Boolean
+)*/
